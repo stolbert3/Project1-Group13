@@ -10,7 +10,7 @@ SKETCH/WIREFRAME: Project1-Group13/Movie App Wireframe.png
 APIs: MovieGlu or Fandango for theater and showtime data, Google Maps for location services and travel time
 
 BREAKDOWN OF TASKS: 
-*Abdul:
-*Dalton:
-*Scott:
-*Sydney:
+Abdul & Dalton: Write HTML code & choose CSS framework
+Scott: Get API keys
+Sydney: Set up Firebase for user input (user accounts)
+All: javascript code
