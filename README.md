@@ -13,8 +13,6 @@ BREAKDOWN OF TASKS:
 Abdul & Dalton: Write HTML code & choose CSS framework
 
 Scott: Get API keys
-Google Maps API Key: AIzaSyDLq2XZ_2Mte-sLipbCXiNajVRWFNnT_xI
-Google Maps API Documentation: https://developers.google.com/maps/documentation/
 
 Sydney: Set up Firebase for user input (user accounts)
 All: javascript code
