@@ -1,5 +1,8 @@
 # Project1-Group13
+<<<<<<< HEAD
 
+=======
+>>>>>>> c02e01c1fad0092b12be20573ca89eea5a3e3e9d
 PROJECT TITLE: Movie App
 
 TEAM MEMBERS: Abdul Hameed, Dalton Ricker, Scott James Ritchey, Sydney Tolbert
@@ -12,6 +15,12 @@ APIs: MovieGlu or Fandango for theater and showtime data, Google Maps for locati
 
 BREAKDOWN OF TASKS: 
 Abdul & Dalton: Write HTML code & choose CSS framework
+<<<<<<< HEAD
 Scott: Get API keys
+=======
+
+Scott: Get API keys
+
+>>>>>>> c02e01c1fad0092b12be20573ca89eea5a3e3e9d
 Sydney: Set up Firebase for user input (user accounts)
 All: javascript code
