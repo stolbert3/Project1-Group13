@@ -3,7 +3,7 @@ html, body, header, .view {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background: url("images/glacier.jpg") no-repeat center center fixed;
+    background: url("images/atl.jpg") no-repeat center center fixed;
     height: 100%;
 }
 

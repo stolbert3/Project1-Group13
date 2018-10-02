@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Project 1 | Group 13</title>
+    <title>Project 1 Results | Group 13</title>
 
     <!-- Link to Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -30,9 +30,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="results.html">Results Page</a>
             </li>
-            <!--<li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>-->
             <!--<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Other CSS
@@ -64,7 +61,7 @@
 <div class="view">
     <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
         <!-- Content -->
-        <div class="container">
+        <div class="container-fluid">
             <!--Grid row-->
             <div class="row">
                 <!--Grid column-->
@@ -74,10 +71,9 @@
                 <!--Grid column-->
             </div>
             <div class="row m-5">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="card border-light bg-transparent">
-                        <div class="card-header bg-transparent border-light text-white text-center">Search for Movies</div>
+                        <div class="card-header bg-transparent border-light text-white text-center">Filter Results</div>
                         <div class="card-body">
                             <form>
                                 <div class="form-group text-white text-center">
@@ -109,19 +105,78 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3"></div>
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-md-8">
+                    <div class="card border-light bg-transparent">
+                        <div class="card-header bg-transparent border-light text-white text-center">Results Display</div>
+                        <div class="card-body bg-clear">
+                            <form>
+                                <div class="form-group text-white">
+                                    <label for="inputAddress">Address</label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                                </div>
+                                <div class="form-group text-white">
+                                    <label for="inputAddress2">Address 2</label>
+                                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                </div>
+                                <div class="form-row text-white">
+                                    <div class="form-group col-md-5">
+                                        <label for="inputCity">City</label>
+                                        <input type="text" class="form-control" id="inputCity">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="blank4">State</label>
+                                        <select id="blank4" class="form-control">
+                                            <option selected>Choose...</option>
+                                            <option>Atlanta</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputZip">Zip</label>
+                                        <input type="text" class="form-control" id="blank5">
+                                    </div>
+                                </div>
+                                <div class="form-row text-white">
+                                    <div class="form-group col-md-6">
+                                        <label for="hour-limit">Less Than...</label>
+                                        <input type="text" class="form-control" id="hour-limit" placeholder="3 hours">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="time-done">Out By...</label>
+                                        <input type="number" class="form-control" id="time-done" placeholder="1600">
+                                    </div>
+                                </div>
+                                <div class="form-row text-white">
+                                    <div class="form-group col-md-6">
+                                        <label for="travel-distance">Within... Distance</label>
+                                        <input type="text" class="form-control" id="travel-distance" placeholder="15 miles">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="travel-time">Within... Time</label>
+                                        <input type="number" class="form-control" id="travel-time" placeholder="20 min">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <button class="btn btn-outline-light" id="blank10" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-    <!-- Link to jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- Link to Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <!-- Link to Boostrap Javascript Plugins -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <!-- Link to Javascript -->
-    <script src="assets/app.js" type="javascript"></script>
+<!-- Link to jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!-- Link to Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<!-- Link to Boostrap Javascript Plugins -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!-- Link to Javascript -->
+<script src="assets/app.js" type="javascript"></script>
 </body>
 </html>
