@@ -1,0 +1,16 @@
+html, body, header, .view {
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background: url("images/atl.jpg") no-repeat center center fixed;
+    height: 100%;
+}
+
+.bg-transparent {
+    background: transparent;
+}
+
+.bg-clear {
+    opacity: 0;
+}
