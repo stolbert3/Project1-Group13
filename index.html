@@ -80,29 +80,53 @@
                         <div class="card-header bg-transparent border-light text-white text-center">Search for Movies</div>
                         <div class="card-body">
                             <form>
-                                <div class="form-group text-white text-center">
+                                <!--<div class="form-group text-white text-center">
                                     <label for="inputLandmark">Landmark:</label>
-                                    <input type="text" class="form-control" id="inputLandmark" placeholder="Georgia World Congress Center, e.g.">
+                                    <div class="form-group form-row justify-content-center">
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="inputLandmark" placeholder="Georgia World Congress Center, e.g.">
+                                        </div>
+                                        <div class="col-auto"></div>
+                                        <div class="col-md-2">
+                                            <button type="submit" class="btn btn-outline-light mr-0" id="submit-landmark">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>-->
+                                <div class="form-row form-group align-items-center text-white">
+                                    <label for="inputLandmark" class="col-md-3 col-form-label">Landmark:</label>
+                                    <div class="col-md-7">
+                                        <input type="text" class="form-control" id="inputLandmark" placeholder="Georgia World Congress Center, e.g.">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-outline-light" id="submit-landmark">Submit</button>
+                                    </div>
                                 </div>
-                                <div class="form-row text-white text-center">
+                                <div class="form-row form-group text-white text-center">
+                                    <label for="inputZip" class="col-md-3 col-form-label">Zip:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="inputZip">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-outline-light" id="submit-zip">Submit</button>
+                                    </div>
+                                </div>
+                     <!--           <div class="form-row text-white text-center">
                                     <div class="form-group col-md-4"></div>
                                     <div class="form-group col-md-4">
                                         <label for="inputZip">Zip:</label>
                                         <input type="text" class="form-control" id="inputZip">
                                     </div>
                                     <div class="form-group col-md-4"></div>
-                                </div>
-                                <div class="form-row text-white text-center">
-                                    <div class="form-group col-md-4"></div>
-                                    <div class="form-group form-check form-check-inline col-md-4">
+                                </div>-->
+                                <!--<div class="form-row text-white text-center">
+                                    <div class="form-group form-check form-check-inline col-md-12 justify-content-center">
                                         <input type="checkbox" class="form-check-input" id="useMyLocation">
                                         <label class="form-check-label" for="useMyLocation">Use My Location</label>
                                     </div>
-                                    <div class="form-group col-md-4"></div>
-                                </div>
+                                </div>-->
                                 <div class="form-row text-center">
                                     <div class="form-group col-md-12">
-                                        <button class="btn btn-outline-light" id="submit-query" type="submit">Submit</button>
+                                        <button class="btn btn-outline-light" id="submit-use-location" type="submit">Use My Location</button>
                                     </div>
                                 </div>
                             </form>
