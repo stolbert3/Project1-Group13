@@ -43,7 +43,3 @@ $("#use-location").on("click", function(event) {
 });
 
 // Document Load Functions =============================================================================================
-$(document).ready(function() {
-
-
-});
