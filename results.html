@@ -76,27 +76,26 @@
                         <div class="card-header bg-transparent border-light text-white text-center">Filter Results</div>
                         <div class="card-body">
                             <form>
-                                <div class="form-group text-white text-center">
-                                    <label for="inputLandmark">Landmark:</label>
-                                    <input type="text" class="form-control" id="inputLandmark" placeholder="Georgia World Congress Center, e.g.">
-                                </div>
                                 <div class="form-row text-white text-center">
-                                    <div class="form-group col-md-4"></div>
-                                    <div class="form-group col-md-4">
-                                        <label for="inputZip">Zip:</label>
-                                        <input type="text" class="form-control" id="inputZip">
-                                    </div>
-                                    <div class="form-group col-md-4"></div>
+                                    <label for="inputDay">Day:</label>
+                                    <input type="text" class="form-control" id="inputDay" placeholder="01/01/2018">
                                 </div>
+                                <br>
+                                <div class="form-row text-white text-center">
+                                    <label for="inputTime">Time:</label>
+                                    <input type="text" class="form-control" id="inputTime" placeholder="12:00pm">
+                                </div>
+                                <br>
                                 <div class="form-row text-white text-center">
                                     <div class="form-group form-check form-check-inline col-md-12 justify-content-center">
                                         <input type="checkbox" class="form-check-input" id="useMyLocation">
                                         <label class="form-check-label" for="useMyLocation">Use My Location</label>
                                     </div>
                                 </div>
+                                <br>
                                 <div class="form-row text-center">
                                     <div class="form-group col-md-12">
-                                        <button class="btn btn-outline-light" id="submit-query" type="submit">Submit</button>
+                                        <button class="btn btn-outline-light findMovies" id="submit-parameters" type="submit">Search</button>
                                     </div>
                                 </div>
                             </form>
