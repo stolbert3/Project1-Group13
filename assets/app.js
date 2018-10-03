@@ -1,34 +1,37 @@
 $(document).ready(function() {
     var zipCode = 0;
-    var latitude = 0;
-    var longitude = 0;
+    var userLatitude = 0;
+    var userLongitude = 0;
     console.log('hello');
 
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(handleGetCurrentPosition);
-        } 
-        else { 
-            $("#useLocation").text("Geolocation is not supported by this browser.");
-        }
-        console.log("Test");
-    };
-
-    function handleGetCurrentPosition(location){
-        latitude = location.coords.latitude;
-        longitude = location.coords.longitude;
-    };
-
-    $("#landmark").on('click', function(){
-        userLocation = '';
+    $("#submit-landmark").on('click', function(event){
+        event.preventDefault();
+        userLatitude = '';
+        userLongitude = '';
+        console.log("Search by Landmark")
     });
 
-    $("#zipInput").on('click', function(){
-        userLocation = '';
+    $("#submit-zip").on('click', function(event){
+        event.preventDefault();
+        zipCode = $("#inputzip").value;
+        //if (zipCode.length == 5) {
+            
+        //}
+        //else {
+        //    $("#inputzip").attr("placeholder", "Please enter a valid 5-digit Zip Code");
+        //};
+        console.log("Search by Zip")
     });
 
-    $("#myLocation").on('click', function(){
-        getLocation();
+    $("#submit-use-location").on('click', function(event){
+        event.preventDefault();
+        console.log("Search by my location")
+        
+        navigator.geolocation.getCurrentPosition(function(position){
+            userLatitude = position.coords.latitude;
+            userLongitude = position.coords.longitude;
+        });
+    
     });
 
     function getShowtimes(){
