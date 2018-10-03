@@ -19,16 +19,26 @@ $(document).ready(function() {
         longitude = location.coords.longitude;
     };
 
-    $("#landmark").on('click', function(){
-        userLocation = '';
+    $("#submit-landmark").on('click', function(){
+        latitude = '';
+        longitude = '';
+        console.log("Search by Landmark")
     });
 
-    $("#zipInput").on('click', function(){
-        userLocation = '';
+    $("#submit-zip").on('click', function(){
+        zipCode = $("#inputzip").value;
+        if (zipCode.length == 5) {
+            
+        }
+        else {
+            $("#inputzip").attr("placeholder", "Please enter a valid 5-digit Zip Code");
+        };
+        console.log("Search by Zip")
     });
 
-    $("#myLocation").on('click', function(){
+    $("#submit-use-location").on('click', function(){
         getLocation();
+        console.log("Search by my location");
     });
 
     function getShowtimes(){
