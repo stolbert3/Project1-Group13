@@ -1,8 +1,8 @@
-$(document).ready(function() {
 
 
-});
 
+
+// Button Click Functions ==============================================================================================
 $("#login").on("click", function() {
     console.log("login");
 });
@@ -40,4 +40,10 @@ $("#use-location").on("click", function(event) {
         }
         console.log(`Geolocation Error: ${message}`)
     }
+});
+
+// Document Load Functions =============================================================================================
+$(document).ready(function() {
+
+
 });
