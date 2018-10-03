@@ -55,7 +55,7 @@
         <form class="form-inline my-2 my-lg-0">
             <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-            <button class="btn btn-outline-warning my-2 ml-2 my-sm-0">Login</button>
+            <button class="btn btn-outline-warning my-2 ml-2 my-sm-0" id="login">Login</button>
         </form>
     </div>
 </nav>
@@ -79,26 +79,14 @@
                     <div class="card border-light bg-transparent">
                         <div class="card-header bg-transparent border-light text-white text-center">Search for Movies</div>
                         <div class="card-body">
-                            <form class="form">
-                                <!--<div class="form-group text-white text-center">
-                                    <label for="inputLandmark">Landmark:</label>
-                                    <div class="form-group form-row justify-content-center">
-                                        <div class="col-md-9">
-                                            <input type="text" class="form-control" id="inputLandmark" placeholder="Georgia World Congress Center, e.g.">
-                                        </div>
-                                        <div class="col-auto"></div>
-                                        <div class="col-md-2">
-                                            <button type="submit" class="btn btn-outline-light mr-0" id="submit-landmark">Submit</button>
-                                        </div>
-                                    </div>
-                                </div>-->
+                            <form>
                                 <div class="form-row form-group text-white">
                                     <label for="inputLandmark" class="col-form-label">Landmark:</label>
                                     <div class="col-auto">
                                         <input type="text" class="form-control" id="inputLandmark" placeholder="Georgia World Congress Center, e.g.">
                                     </div>
                                     <div class="col">
-                                        <button type="submit" class="btn btn-outline-light" id="submit-landmark">Submit</button>
+                                        <button class="btn btn-outline-light" id="submit-landmark" type="submit">Submit</button>
                                     </div>
                                 </div>
                                 <div class="form-row form-group align-center text-white">
@@ -107,26 +95,12 @@
                                         <input type="text" class="form-control" id="inputZip">
                                     </div>
                                     <div class="col">
-                                        <button type="submit" class="btn btn-outline-light" id="submit-zip">Submit</button>
+                                        <button class="btn btn-outline-light" id="submit-zip" type="submit">Submit</button>
                                     </div>
                                 </div>
-                     <!--           <div class="form-row text-white text-center">
-                                    <div class="form-group col-md-4"></div>
-                                    <div class="form-group col-md-4">
-                                        <label for="inputZip">Zip:</label>
-                                        <input type="text" class="form-control" id="inputZip">
-                                    </div>
-                                    <div class="form-group col-md-4"></div>
-                                </div>-->
-                                <!--<div class="form-row text-white text-center">
-                                    <div class="form-group form-check form-check-inline col-md-12 justify-content-center">
-                                        <input type="checkbox" class="form-check-input" id="useMyLocation">
-                                        <label class="form-check-label" for="useMyLocation">Use My Location</label>
-                                    </div>
-                                </div>-->
                                 <div class="form-row form-group text-center">
                                     <div class="col-md-12">
-                                        <button class="btn btn-outline-light" id="submit-use-location" type="submit">Use My Location</button>
+                                        <button class="btn btn-outline-light" id="use-location" type="submit">Submit</button>
                                     </div>
                                 </div>
                             </form>
@@ -146,6 +120,6 @@
     <!-- Link to Boostrap Javascript Plugins -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <!-- Link to Javascript -->
-    <script src="assets/app.js" type="javascript"></script>
+    <script src="assets/app.js"></script>
 </body>
 </html>
