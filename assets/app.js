@@ -1,6 +1,6 @@
 // Functions ===========================================================================================================
 function queryYoutubeAPI(landmark) {
-    let apikey = 'AIzaSyAEIDEiKDoZiRNAKOr0sVZRa3l_KeoyrL8';
+    let apikey = '';
     let queryURL = `https://www.googleapis.com/youtube/v3/search?key=${apikey}&maxResults=25&part=snippet&q=${landmark}&type=video`;
 
     $.ajax({
@@ -23,7 +23,7 @@ function queryYoutubeAPI(landmark) {
 
 
 function queryOMDBAPI(landmark) {
-    let apikey = '39fce93e';
+    let apikey = '';
     let queryURL = `http://www.omdbapi.com/?apikey=${apikey}&s=${landmark}`;
 
     $.ajax({
@@ -39,7 +39,7 @@ function queryOMDBAPI(landmark) {
 
 
 function queryMarvelAPI(landmark) {
-    let apikey = '48c2cd340626ba6737ca1d8a4c04bb03';
+    let apikey = '';
     let queryURL = `https://gateway.marvel.com:443/v1/public/characters?name=${landmark}&apikey=${apikey}`;
 
     $.ajax({
@@ -57,7 +57,7 @@ function queryMarvelAPI(landmark) {
 
 function queryGooglePlaces(landmark) {
 
-    let apikey = 'AIzaSyBHU9bE9A6cB8IKdtFef3n0oIKxNEywZzY';
+    let apikey = '';
     let queryURL = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${apikey}&input=${landmark}&inputtype=textquery`;
 
     $.ajax({
@@ -79,33 +79,14 @@ function queryAMC(date, lat, long) {
     $.ajax({
         method: "GET",
         url: `https://api.amctheatres.com/v2/showtimes/views/current-location/${date}/${lat}/${long}`,
-        data: {"X-AMC-Vendor-Key": "838420FE-02D5-4D21-B72D-EC76364386E6"},
+        data: {"X-AMC-Vendor-Key": ""},
         contentType: "application/JSON",
     })
         .then(function(response) {
             let placeID = response.data;
             console.log(placeID);
         }).catch(console.log);
-        /*X-AMC-Vendor-Key: `6A3405DB-2F02-46CF-ADAE-E092241F5706`,
-        Content-type: application/JSON; charset=UTF-8,*/
 
-
-    /*curl -X GET -H "X-AMC-Vendor-Key: 6A3405DB-2F02-46CF-ADAE-E092241F5706"
-    -H "Content-Type: application/json"
-    -H "charset: UTF-8" "https://api.amctheatres.com/v2/theatres/610/showtimes/2-24-17/?movie=wall"*/
-
-        /*curl -X GET \
-            -H "X-AMC-Vendor-Key: 6A3405DB-2F02-46CF-ADAE-E092241F5706" \
-            -H "Content-Type:application/json" \
-            -H "charset: UTF-8" \
-            `https://api.amctheatres.com/v2/showtimes/views/current-location/${date}/${lat}/${long}`;*/
-
-        /*curl -u - H "X-AMC-Vendor-Key: 6A3405DB-2F02-46CF-ADAE-E092241F5706"; "Content-Type:application/json"; "charset: UTF-8" -X Get `https://api.amctheatres.com/v2/showtimes/views/current-location/${date}/${lat}/${long}`*/
-
-        /*.then(function(response) {
-            let placeID = response.data;
-            console.log(placeID);
-        }).catch(console.log);*/
 }
 
 // Button Click Functions ==============================================================================================
