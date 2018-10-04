@@ -89,6 +89,7 @@ $("#use-location").on("click", function(event) {
 });
 
 // Document Load Functions =============================================================================================
+/*
 $(document).ready(function() {
     var zipCode = 0;
     var userLatitude = 0;
@@ -113,6 +114,7 @@ $(document).ready(function() {
 
 
 
+*/
 
 // Wikipedia ===========================================================================================================
 function queryWikiAPI(landmark) {
