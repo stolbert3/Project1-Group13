@@ -1,3 +1,4 @@
+
 // Functions ===========================================================================================================
 function queryYoutubeAPI(landmark) {
     let apikey = '';
@@ -96,6 +97,7 @@ $("#login").on("click", function() {
 
 $("#submit-landmark").on("click", function(event) {
     event.preventDefault();
+
     console.log("Search Via Landmark");
     let landmark = $("#inputLandmark").val().trim();
     console.log(landmark);
@@ -106,11 +108,13 @@ $("#submit-landmark").on("click", function(event) {
     /*queryGooglePlaces(landmark);*/
 
     $("#inputLandmark").val("");
+
 });
 
 $("#submit-zip").on("click", function(event) {
     event.preventDefault();
-    console.log("submit zip");
+
+    console.log("Search by Zip")
 
 });
 
@@ -143,6 +147,22 @@ $("#use-location").on("click", function(event) {
 
 // Document Load Functions =============================================================================================
 $(document).ready(function() {
+    var zipCode = 0;
+    var userLatitude = 0;
+    var userLongitude = 0;
+    console.log('hello');
+
+    $(".findMovies").on('click', function(){
+        getShowtimes();
+        //change to next page
+        //display showtimes object as list
+    })
+
+    //NEXT PAGE: results and parameters
+    //if input field has a value when submit button is clicked, add those parameters to getShowtimes()
+        //new date/time
+        //new location
+        //time constraint
+        //driving time
 
 });
-
