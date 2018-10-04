@@ -1,7 +1,7 @@
 // Functions ===========================================================================================================
 function queryZGracenoteAPI (date, zipCode) {
 
-    let apiKey = '';
+    let apiKey = 'nktdvpgymda7efpjjx4jr9eh';
     let queryURL = `http://data.tmsapi.com/v1.1/movies/showings?startDate=${date}&zip=${zipCode}&api_key=${apiKey}`;
 
     $.ajax({
@@ -16,7 +16,7 @@ function queryZGracenoteAPI (date, zipCode) {
 
 function queryLGracenoteAPI (date, lat, lng) {
 
-    let apiKey = '';
+    let apiKey = 'nktdvpgymda7efpjjx4jr9eh';
     let queryURL = `http://data.tmsapi.com/v1.1/movies/showings?startDate=${date}&lat=${lat}&lng=${lng}&api_key=${apiKey}`;
 
     $.ajax({
@@ -38,7 +38,7 @@ $("#login").on("click", function() {
     console.log("login");
 });
 
-$("#submit-landmark").on("click", function(event) {
+/*$("#submit-landmark").on("click", function(event) {
     event.preventDefault();
 
     console.log("Search Via Landmark");
@@ -49,11 +49,12 @@ $("#submit-landmark").on("click", function(event) {
     /*queryYoutubeAPI(landmark);*/
     /*queryOMDBAPI(landmark);*/
     /*queryMarvelAPI(landmark);*/
-    /*queryGooglePlaces(landmark);*/
+    /*queryGooglePlaces(landmark);
 
     $("#inputLandmark").val("");
+    
 
-});
+});*/
 
 $("#submit-zip").on("click", function(event) {
     event.preventDefault();
@@ -100,7 +101,7 @@ $("#use-location").on("click", function(event) {
 
 });
 
-// Document Load Functions =============================================================================================
+/*/ Document Load Functions =============================================================================================
 $(document).ready(function() {
     var zipCode = 0;
     var userLatitude = 0;
@@ -120,7 +121,7 @@ $(document).ready(function() {
         //time constraint
         //driving time
 
-});
+});*/
 
 
 
