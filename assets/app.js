@@ -101,9 +101,9 @@ $("#submit-landmark").on("click", function(event) {
     let landmark = $("#inputLandmark").val().trim();
     console.log(landmark);
 
-    queryYoutubeAPI(landmark);
+    /*queryYoutubeAPI(landmark);*/
     /*queryOMDBAPI(landmark);*/
-    /*queryMarvelAPI(landmark);*/
+    queryMarvelAPI(landmark);
     /*queryGooglePlaces(landmark);*/
 
     $("#inputLandmark").val("");
