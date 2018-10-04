@@ -26,8 +26,6 @@ function queryLGracenoteAPI (date, lat, lng) {
         .then(function(response) {
             console.log(response);
 
-            console.log(moviedata);
-
         }).catch(console.log)
 
 }
