@@ -1,4 +1,3 @@
-
 // Functions ===========================================================================================================
 function queryYoutubeAPI(landmark) {
     let apikey = '';
@@ -15,7 +14,7 @@ function queryYoutubeAPI(landmark) {
             }*/
             let snippets = response.items;
             for (var k = 0; k < snippets.length; k++) {
-                console.log(snippets[k].id.videoId);
+                console.log(`https://www.youtube.com/watch?v=${snippets[k].id.videoId}`);
             }
 
 
