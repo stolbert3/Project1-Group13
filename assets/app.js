@@ -1,4 +1,20 @@
 // Functions ===========================================================================================================
+function queryWikiAPI(landmark) {
+    let queryURL = `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=extracts&titles=${landmark}&exintro=1`;
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+        .then(function(response) {
+            console.log(response.query.pages);
+            let obj = response.query.pages;
+            let page = obj[Object.keys(obj)[0]];
+            console.log(page.pageid);
+            console.log(page.extract);
+        }).catch(console.log);
+}
+
 function queryYoutubeAPI(landmark) {
     let apikey = '';
     let queryURL = `https://www.googleapis.com/youtube/v3/search?key=${apikey}&maxResults=25&part=snippet&q=${landmark}&type=video`;
@@ -76,11 +92,13 @@ function queryAMC(date, lat, long) {
     console.log(lat);
     console.log(long);
 
+
+
     $.ajax({
         method: "GET",
         url: `https://api.amctheatres.com/v2/showtimes/views/current-location/${date}/${lat}/${long}`,
         data: {"X-AMC-Vendor-Key": ""},
-        contentType: "application/JSON",
+        contentType: "application/JSON;charset=UTF-8",
     })
         .then(function(response) {
             let placeID = response.data;
@@ -101,9 +119,10 @@ $("#submit-landmark").on("click", function(event) {
     let landmark = $("#inputLandmark").val().trim();
     console.log(landmark);
 
+    queryWikiAPI(landmark);
     /*queryYoutubeAPI(landmark);*/
     /*queryOMDBAPI(landmark);*/
-    queryMarvelAPI(landmark);
+    /*queryMarvelAPI(landmark);*/
     /*queryGooglePlaces(landmark);*/
 
     $("#inputLandmark").val("");
@@ -127,8 +146,8 @@ $("#use-location").on("click", function(event) {
         let userLongitude = position.coords.longitude;
 
         console.log(`Position is ${userLatitude} x ${userLongitude}`);
-        let date = '10-3-2018';
-        /*queryAMC(date, userLatitude, userLongitude)*/
+        let date = '10-4-2018';
+        queryAMC(date, userLatitude, userLongitude)
     }
 
     function denied(error) {
