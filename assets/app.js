@@ -32,7 +32,7 @@ function queryLGracenoteAPI (date, lat, lng) {
 
 
 // Button Click Functions ==============================================================================================
-$("#login").on("click", function() {
+/*$("#login").on("click", function() {
     console.log("login");
 });
 
@@ -43,15 +43,9 @@ $("#submit-landmark").on("click", function(event) {
     let landmark = $("#inputLandmark").val().trim();
     console.log(landmark);
 
-    queryWikiAPI(landmark);
-    /*queryYoutubeAPI(landmark);*/
-    /*queryOMDBAPI(landmark);*/
-    /*queryMarvelAPI(landmark);*/
-    /*queryGooglePlaces(landmark);*/
-
     $("#inputLandmark").val("");
 
-});
+});*/
 
 $("#submit-zip").on("click", function(event) {
     event.preventDefault();
@@ -79,10 +73,6 @@ $("#use-location").on("click", function(event) {
         let date = moment().format('YYYY-MM-DD');
 
         queryLGracenoteAPI(date, userLat, userLong);
-
-
-
-        /*queryAMC(date, userLatitude, userLongitude)*/
     }
 
     function denied(error) {
