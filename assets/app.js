@@ -1,4 +1,19 @@
 // Functions ===========================================================================================================
+function queryGracenoteAPI (date, zipCode) {
+
+    let apiKey = '';
+    let queryURL = `http://data.tmsapi.com/v1.1/movies/showings?startDate=${date}&zip=${zipCode}&api_key=${apiKey}`;
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+        .then(function(response) {
+            console.log(response);
+        }).catch(console.log)
+
+}
+
 function queryWikiAPI(landmark) {
     let queryURL = `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=extracts&titles=${landmark}&exintro=1`;
 
@@ -132,7 +147,12 @@ $("#submit-landmark").on("click", function(event) {
 $("#submit-zip").on("click", function(event) {
     event.preventDefault();
 
-    console.log("Search by Zip")
+    let zipCode = $("#inputZip").val().trim();
+    console.log(`Search by Zip: ${zipCode}`);
+    let date = moment().format('YYYY-MM-DD');
+    console.log(date);
+
+    queryGracenoteAPI(date, zipCode);
 
 });
 
