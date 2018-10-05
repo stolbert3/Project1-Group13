@@ -1,7 +1,38 @@
-// Functions ===========================================================================================================
+function displayMovies(response) {
+    console.log(response);
+
+    /*let responseNum = response.length;
+    console.log(responseNum);*/
+
+    /*let movieCard = `<div class="card text-center border-light bg-transparent">`;
+    let movieCardTitle = `<div class="card-header bg-transparent border-light text-white">Currently Playing Nearby</div>`;
+    let movieCardBody = `<div class="card-body">`;
+    movieCard.append(movieCardTitle, movieCardBody);*/
+
+    let movieCard = `<div class="card text-center border-light bg-transparent">
+                        <div class="card-header bg-transparent border-light text-white">Currently Playing Nearby</div>
+                        <div class="card-body" id="movie-title-display">`;
+
+    $("#col13").append(movieCard);
+
+    for (var k = 0; k < response.length; k++) {
+        let movieTitle = response[k].title;
+        console.log(movieTitle);
+
+        let movieCardTitle = `<p class="card-text text-white" id="${k}" data-title="${k}">${movieTitle}</p>`;
+
+        $("#movie-title-display").append(movieCardTitle);
+    }
+
+
+
+
+}
+
+// API Query Functions =================================================================================================
 function queryZGracenoteAPI (date, zipCode) {
 
-    let apiKey = '';
+    let apiKey = 'kt43yjc7q7yt3nxk656zr2vb';
     let queryURL = `http://data.tmsapi.com/v1.1/movies/showings?startDate=${date}&zip=${zipCode}&api_key=${apiKey}`;
 
     $.ajax({
@@ -9,14 +40,16 @@ function queryZGracenoteAPI (date, zipCode) {
         method: "GET"
     })
         .then(function(response) {
-            console.log(response);
+            // console.log(response);
+            displayMovies(response);
+
         }).catch(console.log)
 
 }
 
 function queryLGracenoteAPI (date, lat, lng) {
 
-    let apiKey = '';
+    let apiKey = 'kt43yjc7q7yt3nxk656zr2vb';
     let queryURL = `http://data.tmsapi.com/v1.1/movies/showings?startDate=${date}&lat=${lat}&lng=${lng}&api_key=${apiKey}`;
 
     $.ajax({
@@ -24,12 +57,12 @@ function queryLGracenoteAPI (date, lat, lng) {
         method: "GET"
     })
         .then(function(response) {
-            console.log(response);
+            // console.log(response);
+            displayMovies(response);
 
         }).catch(console.log)
 
 }
-
 
 // Button Click Functions ==============================================================================================
 $("#firebase-login").on("click", function(event) {
