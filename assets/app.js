@@ -38,7 +38,7 @@ function displayShowtimes(key) {
     let short = currentMovies[key].shortDescription;
     let movieurl = currentMovies[key].officialUrl;
     let showtimes = currentMovies[key].showtimes;
-    /*console.log(showtimes);*/
+    console.log(showtimes);
 
     let movieCard = `<div class="card text-center border-light bg-transparent">
                         <h5 class="card-header bg-transparent border-light text-white">${title} (${rated})</h5>
@@ -62,12 +62,33 @@ function displayShowtimes(key) {
     $("#column-3").append(movieCard);
 
     for (var m = 0; m < showtimes.length; m++) {
-        let screening = showtimes[m].dateTime;
-        let screeningadj = moment(screening).format("h:mm A");
+        let currentTime = moment();/*.format("h:mm A");*/
+        /*console.log(currentTime);*/
+        let screeningadj = moment(showtimes[m].dateTime);/*.format("h:mm A");*/
         /*console.log(screeningadj);*/
-        let venue = showtimes[m].theatre.name;
+        let diff = screeningadj.diff(currentTime, 'minutes');
+        if (diff > 0) {
+            console.log(diff);
+
+            let venue = showtimes[m].theatre.name;
+            let ticketURL = showtimes[m].ticketURI;
+
+            let ticketTimeData = `<tr>
+                                  <td><p class="text-white">${screeningadj.format("h:mm A")}</p></td>
+                                  <td><p class="text-white">${venue}</p></td>
+                                  <td><a href="${ticketURL}" target="_blank"><p class="text-white">Link</p></a></td>
+                                </tr>`;
+
+            $("#ticket-times tbody").append(ticketTimeData);
+
+
+        } else {
+            console.log('Showtime Passed');
+        }
+
+
+        /*let venue = showtimes[m].theatre.name;
         let ticketURL = showtimes[m].ticketURI;
-        /*console.log(ticketURL);*/
 
         let ticketTimeData = `<tr>
                                   <td><p class="text-white">${screeningadj}</p></td>
@@ -75,7 +96,7 @@ function displayShowtimes(key) {
                                   <td><a href="${ticketURL}" target="_blank"><p class="text-white">Link</p></a></td>
                                 </tr>`;
 
-        $("#ticket-times tbody").append(ticketTimeData);
+        $("#ticket-times tbody").append(ticketTimeData);*/
 
         /*let showtimeData = `<p class="card-text text-white">${screeningadj} : ${venue} : <a href="${ticketURL}" target="_blank">
                             <p class="card-text text-white">Link</p></a></p>`;*/
