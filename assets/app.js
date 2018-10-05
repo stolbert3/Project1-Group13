@@ -14,7 +14,7 @@ function displayMovies() {
     for (var k = 0; k < currentMovies.length; k++) {
         let movieTitle = currentMovies[k].title;
 
-        let movieCardTitle = `<a href="javascript:;" id="${k}">
+        let movieCardTitle = `<a href="javascript:;" class="movie-title" id="${k}">
                                 <p class="card-text text-white">${movieTitle}</p></a>`;
 
         $("#movie-title-display").append(movieCardTitle);
@@ -261,7 +261,7 @@ $(document).on("click", "#use-location", function(event) {
 
 });
 
-$(document).on("click", "a", function() {
+$(document).on("click", ".movie-title", function() {
     let key = $(this).attr("id");
 
     $("#column-2, #column-3").empty();
