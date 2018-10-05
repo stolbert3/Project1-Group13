@@ -1,33 +1,51 @@
 function displayMovies(response) {
     console.log(response);
 
-    /*let responseNum = response.length;
-    console.log(responseNum);*/
-
-    /*let movieCard = `<div class="card text-center border-light bg-transparent">`;
-    let movieCardTitle = `<div class="card-header bg-transparent border-light text-white">Currently Playing Nearby</div>`;
-    let movieCardBody = `<div class="card-body">`;
-    movieCard.append(movieCardTitle, movieCardBody);*/
-
     let movieCard = `<div class="card text-center border-light bg-transparent">
                         <div class="card-header bg-transparent border-light text-white">Currently Playing Nearby</div>
                         <div class="card-body" id="movie-title-display">`;
 
-    $("#col13").append(movieCard);
+    $("#column-1").append(movieCard);
 
     for (var k = 0; k < response.length; k++) {
         let movieTitle = response[k].title;
         console.log(movieTitle);
 
-        let movieCardTitle = `<p class="card-text text-white" id="${k}" data-title="${k}">${movieTitle}</p>`;
+        let movieCardTitle = `<a href="javascript:;"><p class="card-text text-white" id="${k}" data-title="${k}">${movieTitle}</p></a>`;
 
         $("#movie-title-display").append(movieCardTitle);
     }
 
+    $("#column-2").empty();
 }
 
 function resetPage() {
+    let locationsearchcard = `<div class="card text-center border-light bg-transparent" id="location-search-card">
+                                <div class="card-header bg-transparent border-light text-white">
+                                    Search for Movies
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="form-group mb-0 text-white text-center">
+                                            <label for="inputZip" class="form-label">Zip:</label>
+                                        </div>
+                                        <div class="form-group text-center">
+                                            <input type="number" name="quantity" class="form-control" id="inputZip" placeholder="30345">
+                                        </div>
+                                        <div class="form-group text-center">
+                                            <button class="btn btn-outline-light" id="submit-zip" type="submit">Submit</button>
+                                        </div>
+                                        <div class="form-group mb-0 text-white text-center">
+                                            <p class="text-center">Or</p>
+                                        </div>
+                                        <div class="form-group text-white text-center">
+                                            <button class="btn btn-outline-light" id="use-location" type="submit">Use My Location</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>`;
 
+    $("#column-2").append(locationsearchcard);
 }
 
 // API Query Functions =================================================================================================
@@ -65,12 +83,18 @@ function queryLGracenoteAPI (date, lat, lng) {
 
 }
 
+function queryYoutubeAPI() {
+
+}
+
 // Button Click Functions ==============================================================================================
 $("#reset-search").on("click", function(event) {
     event.preventDefault();
     console.log('Reset');
 
+    $("#column-1, #column-2, #column-3").empty();
     resetPage();
+    $("#reset-search").hide();
 
 });
 
@@ -92,8 +116,8 @@ $("#firebase-login").on("click", function(event) {
     $("#inputLandmark").val("");
 
 });*/
-
-$("#submit-zip").on("click", function(event) {
+$(document).on("click", "#submit-zip", function(event) {
+/*$("#submit-zip").on("click", function(event) {*/
     event.preventDefault();
 
     let zipCode = $("#inputZip").val().trim();
@@ -109,7 +133,8 @@ $("#submit-zip").on("click", function(event) {
 
 });
 
-$("#use-location").on("click", function(event) {
+$(document).on("click", "#use-location", function(event) {
+/*$("#use-location").on("click", function(event) {*/
     event.preventDefault();
     console.log("Search using my location");
     navigator.geolocation.getCurrentPosition(granted, denied);
