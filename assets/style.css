@@ -14,3 +14,7 @@ html, body, header, .view {
 .bg-clear {
     opacity: 0;
 }
+
+#reset-search {
+    display: none;
+}

@@ -24,15 +24,16 @@ function displayMovies(response) {
         $("#movie-title-display").append(movieCardTitle);
     }
 
+}
 
-
+function resetPage() {
 
 }
 
 // API Query Functions =================================================================================================
 function queryZGracenoteAPI (date, zipCode) {
 
-    let apiKey = 'kt43yjc7q7yt3nxk656zr2vb';
+    let apiKey = '';
     let queryURL = `http://data.tmsapi.com/v1.1/movies/showings?startDate=${date}&zip=${zipCode}&api_key=${apiKey}`;
 
     $.ajax({
@@ -49,7 +50,7 @@ function queryZGracenoteAPI (date, zipCode) {
 
 function queryLGracenoteAPI (date, lat, lng) {
 
-    let apiKey = 'kt43yjc7q7yt3nxk656zr2vb';
+    let apiKey = '';
     let queryURL = `http://data.tmsapi.com/v1.1/movies/showings?startDate=${date}&lat=${lat}&lng=${lng}&api_key=${apiKey}`;
 
     $.ajax({
@@ -65,9 +66,17 @@ function queryLGracenoteAPI (date, lat, lng) {
 }
 
 // Button Click Functions ==============================================================================================
+$("#reset-search").on("click", function(event) {
+    event.preventDefault();
+    console.log('Reset');
+
+    resetPage();
+
+});
+
 $("#firebase-login").on("click", function(event) {
     event.preventDefault();
-    console.log("login");
+    console.log("Login");
 
     $("#login-modal").modal('show');
 
@@ -95,6 +104,9 @@ $("#submit-zip").on("click", function(event) {
 
     queryZGracenoteAPI(date, zipCode);
 
+    $("#inputZip").val("");
+    $("#reset-search").show();
+
 });
 
 $("#use-location").on("click", function(event) {
@@ -110,6 +122,8 @@ $("#use-location").on("click", function(event) {
         let date = moment().format('YYYY-MM-DD');
 
         queryLGracenoteAPI(date, userLat, userLong);
+
+        $("#reset-search").show();
     }
 
     function denied(error) {
