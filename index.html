@@ -55,7 +55,7 @@
         <form class="form-inline my-2 my-lg-0">
             <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-            <button class="btn btn-outline-warning my-2 ml-2 my-sm-0" id="login">Login</button>
+            <button class="btn btn-outline-warning my-2 ml-2 my-sm-0" id="firebase-login">Login</button>
         </form>
     </div>
 </nav>
@@ -99,7 +99,7 @@
                                     <button class="btn btn-outline-light" id="submit-zip" type="submit">Submit</button>
                                 </div>
                                 <div class="form-group mb-0 text-white text-center">
-                                    <h6 class="text-center">Or:</h6>
+                                    <p class="text-center">Or</p>
                                 </div>
                                 <div class="form-group text-white text-center">
                                     <button class="btn btn-outline-light" id="use-location" type="submit">Use My Location</button>
@@ -113,6 +113,28 @@
         </div>
     </div>
 </div>
+
+<!--Login Modal Code -->
+<div class="modal fade" tabindex="-1" role="dialog" id="login-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
     <!-- Link to jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

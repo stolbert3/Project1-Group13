@@ -32,11 +32,15 @@ function queryLGracenoteAPI (date, lat, lng) {
 
 
 // Button Click Functions ==============================================================================================
-/*$("#login").on("click", function() {
+$("#firebase-login").on("click", function(event) {
+    event.preventDefault();
     console.log("login");
+
+    $("#login-modal").modal('show');
+
 });
 
-$("#submit-landmark").on("click", function(event) {
+/*$("#submit-landmark").on("click", function(event) {
     event.preventDefault();
 
     console.log("Search Via Landmark");
