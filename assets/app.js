@@ -26,39 +26,64 @@ function displayMovies() {
 function displayShowtimes(key) {
     console.log(currentMovies[key]);
 
+    let ratings = currentMovies[key].ratings;
+    let r = ratings[0];
+   // console.log(ratings);
+   // console.log(r);
+    let rated = r.code;
+   // console.log(rated);
+
     let title = currentMovies[key].title;
     let releasedate = moment(currentMovies[key].releaseDate).format('D MMM YY');
     let short = currentMovies[key].shortDescription;
     let movieurl = currentMovies[key].officialUrl;
     let showtimes = currentMovies[key].showtimes;
-    console.log(showtimes);
+    /*console.log(showtimes);*/
 
     let movieCard = `<div class="card text-center border-light bg-transparent">
-                        <h5 class="card-header bg-transparent border-light text-white">${title}</h5>
-                        <div class="card-body" id="movie-times-display">
-                        <p class="card-text text-white">Released: ${releasedate}</p>
-                        <p class="card-text text-white">${short}</p>
-                        <a href="${movieurl}" target="_blank"><p class="card-text text-white">Official Website</p></a>
-                        
-                    `;
+                        <h5 class="card-header bg-transparent border-light text-white">${title} (${rated})</h5>
+                        <div class="card-body" id="movie-data-display">
+                            <p class="card-text text-white">Released: ${releasedate}</p>
+                            <p class="card-text text-white">${short}</p>
+                            <a href="${movieurl}" target="_blank"><p class="card-text text-white">Official Website</p></a>
+                            <table class="table table-hover" id="ticket-times">
+                              <thead>
+                                <tr>
+                                  <th scope="col"><p class="text-white">Time</p></th>
+                                  <th scope="col"><p class="text-white">Theater</p></th>
+                                  <th scope="col"><p class="text-white">Tickets</p></th>
+                                </tr>
+                              </thead>
+                              <tbody></tbody>
+                              </table>
+                        </div>
+                    </div>`;
+
+    $("#column-3").append(movieCard);
 
     for (var m = 0; m < showtimes.length; m++) {
         let screening = showtimes[m].dateTime;
-        let screeningadj = moment(screening).format("h:mm A - D MMM YY");
-        console.log(screeningadj);
+        let screeningadj = moment(screening).format("h:mm A");
+        /*console.log(screeningadj);*/
         let venue = showtimes[m].theatre.name;
         let ticketURL = showtimes[m].ticketURI;
-        console.log(ticketURL);
+        /*console.log(ticketURL);*/
 
-        let showtimeData = `<p class="card-text text-white">${screeningadj} : ${venue} : <a href="${ticketURL}" target="_blank">Link</a></p>`
+        let ticketTimeData = `<tr>
+                                  <td><p class="text-white">${screeningadj}</p></td>
+                                  <td><p class="text-white">${venue}</p></td>
+                                  <td><a href="${ticketURL}" target="_blank"><p class="text-white">Link</p></a></td>
+                                </tr>`;
 
-        console.log(showtimeData);
-        $("#movie-times-display").append(showtimeData);
+        $("#ticket-times tbody").append(ticketTimeData);
+
+        /*let showtimeData = `<p class="card-text text-white">${screeningadj} : ${venue} : <a href="${ticketURL}" target="_blank">
+                            <p class="card-text text-white">Link</p></a></p>`;*/
+
+        /*console.log(showtimeData);*/
+
+        /*$("#movie-data-display").append(showtimeData);*/
     }
-
-
-
-    $("#column-3").append(movieCard);
 
 }
 
@@ -131,7 +156,7 @@ function queryLGracenoteAPI (date, lat, lng) {
 function queryYoutubeAPI(key) {
 
     let resultsNum = "6";
-    let searchMovie = `${currentMovies[key].title} 2018`;
+    let searchMovie = `${currentMovies[key].title} movie 2018`;
     let apikey = '';
     let queryURL = `https://www.googleapis.com/youtube/v3/search?key=${apikey}&maxResults=${resultsNum}&part=snippet&q=${searchMovie}&type=video`;
 
@@ -238,6 +263,8 @@ $(document).on("click", "#use-location", function(event) {
 
 $(document).on("click", "a", function() {
     let key = $(this).attr("id");
+
+    $("#column-2, #column-3").empty();
 
     queryYoutubeAPI(key);
     displayShowtimes(key);
