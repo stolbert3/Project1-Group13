@@ -1,5 +1,9 @@
-function displayMovies(response) {
-    console.log(response);
+// Global Object to Hold Movie Query Data ==============================================================================
+let currentMovies = {};
+
+// Functions ===========================================================================================================
+function displayMovies() {
+    console.log();
 
     let movieCard = `<div class="card text-center border-light bg-transparent">
                         <div class="card-header bg-transparent border-light text-white">Currently Playing Nearby</div>
@@ -7,16 +11,55 @@ function displayMovies(response) {
 
     $("#column-1").append(movieCard);
 
-    for (var k = 0; k < response.length; k++) {
-        let movieTitle = response[k].title;
-        console.log(movieTitle);
+    for (var k = 0; k < currentMovies.length; k++) {
+        let movieTitle = currentMovies[k].title;
 
-        let movieCardTitle = `<a href="javascript:;"><p class="card-text text-white" id="${k}" data-title="${k}">${movieTitle}</p></a>`;
+        let movieCardTitle = `<a href="javascript:;" id="${k}">
+                                <p class="card-text text-white">${movieTitle}</p></a>`;
 
         $("#movie-title-display").append(movieCardTitle);
     }
 
     $("#column-2").empty();
+}
+
+function displayShowtimes(key) {
+    console.log(currentMovies[key]);
+
+    let title = currentMovies[key].title;
+    let releasedate = moment(currentMovies[key].releaseDate).format('D MMM YY');
+    let short = currentMovies[key].shortDescription;
+    let movieurl = currentMovies[key].officialUrl;
+    let showtimes = currentMovies[key].showtimes;
+    console.log(showtimes);
+
+    let movieCard = `<div class="card text-center border-light bg-transparent">
+                        <h5 class="card-header bg-transparent border-light text-white">${title}</h5>
+                        <div class="card-body" id="movie-times-display">
+                        <p class="card-text text-white">Released: ${releasedate}</p>
+                        <p class="card-text text-white">${short}</p>
+                        <a href="${movieurl}" target="_blank"><p class="card-text text-white">Official Website</p></a>
+                        
+                    `;
+
+    for (var m = 0; m < showtimes.length; m++) {
+        let screening = showtimes[m].dateTime;
+        let screeningadj = moment(screening).format("h:mm A - D MMM YY");
+        console.log(screeningadj);
+        let venue = showtimes[m].theatre.name;
+        let ticketURL = showtimes[m].ticketURI;
+        console.log(ticketURL);
+
+        let showtimeData = `<p class="card-text text-white">${screeningadj} : ${venue} : <a href="${ticketURL}" target="_blank">Link</a></p>`
+
+        console.log(showtimeData);
+        $("#movie-times-display").append(showtimeData);
+    }
+
+
+
+    $("#column-3").append(movieCard);
+
 }
 
 function resetPage() {
@@ -59,8 +102,9 @@ function queryZGracenoteAPI (date, zipCode) {
         method: "GET"
     })
         .then(function(response) {
+            currentMovies = response;
             // console.log(response);
-            displayMovies(response);
+            displayMovies();
 
         }).catch(console.log)
 
@@ -76,14 +120,42 @@ function queryLGracenoteAPI (date, lat, lng) {
         method: "GET"
     })
         .then(function(response) {
+            currentMovies = response;
             // console.log(response);
-            displayMovies(response);
+            displayMovies();
 
         }).catch(console.log)
 
 }
 
-function queryYoutubeAPI() {
+function queryYoutubeAPI(key) {
+
+    let resultsNum = "6";
+    let searchMovie = `${currentMovies[key].title} 2018`;
+    let apikey = '';
+    let queryURL = `https://www.googleapis.com/youtube/v3/search?key=${apikey}&maxResults=${resultsNum}&part=snippet&q=${searchMovie}&type=video`;
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+        .then(function(response) {
+            let snippets = response.items;
+            let videos = [];
+
+            for (var k = 0; k < snippets.length; k++) {
+                videos.push(`https://www.youtube.com/embed/${snippets[k].id.videoId}`);
+            }
+
+            for (var v = 0; v < snippets.length; v++) {
+                let movieVideo = $(`<div class="row mb-3"><div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src=${videos[v]} allowfullscreen></iframe>
+                                    </div></div>`);
+
+                $("#column-2").append(movieVideo);
+            }
+
+        }).catch(console.log);
 
 }
 
@@ -136,14 +208,14 @@ $(document).on("click", "#submit-zip", function(event) {
 $(document).on("click", "#use-location", function(event) {
 /*$("#use-location").on("click", function(event) {*/
     event.preventDefault();
-    console.log("Search using my location");
+    /*console.log("Search using my location");*/
     navigator.geolocation.getCurrentPosition(granted, denied);
 
     function granted(position) {
         let userLat = position.coords.latitude;
         let userLong = position.coords.longitude;
 
-        console.log(`Position is ${userLat} x ${userLong}`);
+        /*console.log(`Position is ${userLat} x ${userLong}`);*/
         let date = moment().format('YYYY-MM-DD');
 
         queryLGracenoteAPI(date, userLat, userLong);
@@ -164,145 +236,10 @@ $(document).on("click", "#use-location", function(event) {
 
 });
 
-// Document Load Functions =============================================================================================
-/*
-$(document).ready(function() {
-    var zipCode = 0;
-    var userLatitude = 0;
-    var userLongitude = 0;
-    console.log('hello');
+$(document).on("click", "a", function() {
+    let key = $(this).attr("id");
 
-    $(".findMovies").on('click', function(){
-        getShowtimes();
-        //change to next page
-        //display showtimes object as list
-    })
-
-    //NEXT PAGE: results and parameters
-    //if input field has a value when submit button is clicked, add those parameters to getShowtimes()
-        //new date/time
-        //new location
-        //time constraint
-        //driving time
+    queryYoutubeAPI(key);
+    displayShowtimes(key);
 
 });
-
-
-
-
-*/
-
-// Wikipedia ===========================================================================================================
-function queryWikiAPI(landmark) {
-
-    let queryURL = `https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=extracts&titles=${landmark}&exintro=1`;
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    })
-        .then(function(response) {
-            console.log(response.query.pages);
-            let obj = response.query.pages;
-            let page = obj[Object.keys(obj)[0]];
-            console.log(page.pageid);
-            console.log(page.extract);
-        }).catch(console.log);
-}
-
-// Youtube =============================================================================================================
-function queryYoutubeAPI(landmark) {
-
-    let apikey = '';
-    let queryURL = `https://www.googleapis.com/youtube/v3/search?key=${apikey}&maxResults=25&part=snippet&q=${landmark}&type=video`;
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    })
-        .then(function(response) {
-            /*let snippets = response.items;
-            for (var k = 0; k < snippets.length; k++) {
-                console.log(snippets[k]);
-            }*/
-            let snippets = response.items;
-            for (var k = 0; k < snippets.length; k++) {
-                console.log(`https://www.youtube.com/watch?v=${snippets[k].id.videoId}`);
-            }
-
-
-        }).catch(console.log);
-}
-
-// OMDB ================================================================================================================
-function queryOMDBAPI(landmark) {
-
-    let apikey = '';
-    let queryURL = `http://www.omdbapi.com/?apikey=${apikey}&s=${landmark}`;
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    })
-        .then(function(response) {
-            let movies = response;
-            console.log(movies);
-
-        }).catch(console.log);
-}
-
-// Marvel API ==========================================================================================================
-function queryMarvelAPI(landmark) {
-
-    let apikey = '';
-    let queryURL = `https://gateway.marvel.com:443/v1/public/characters?name=${landmark}&apikey=${apikey}`;
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    })
-        .then(function(response) {
-            let sh = response;
-            let superhero = response.data;
-            console.log(sh);
-            console.log(superhero);
-
-        }).catch(console.log);
-}
-
-// Google Places =======================================================================================================
-function queryGooglePlaces(landmark) {
-
-    let apikey = '';
-    let queryURL = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${apikey}&input=${landmark}&inputtype=textquery`;
-
-    $.ajax({
-        url: queryURL,
-        contentType: "application/json; charset=UTF-8",
-        method: "GET"
-    })
-        .then(function(response) {
-            let placeID = response.data;
-            console.log(placeID);
-        }).catch(console.log);
-}
-
-// AMC =================================================================================================================
-function queryAMC(date, lat, long) {
-
-    console.log(date);
-    console.log(lat);
-    console.log(long);
-
-    $.ajax({
-        method: "GET",
-        url: `https://api.amctheatres.com/v2/showtimes/views/current-location/${date}/${lat}/${long}`,
-        data: {"X-AMC-Vendor-Key": ""},
-        contentType: "application/JSON;charset=UTF-8",
-    })
-        .then(function(response) {
-            let placeID = response.data;
-            console.log(placeID);
-        }).catch(console.log);
-
-}
