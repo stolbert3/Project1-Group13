@@ -10,9 +10,21 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Link to CSS Stylesheet -->
     <link rel="stylesheet" href="assets/style.css" type="text/css">
+    <!--Firebase Database-->
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    
+    <!--Link to Firebase UI-->
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.4.1/firebaseui.css" />
+
+    
+    
 
 </head>
 <body>
+<!--TEST-->
+<!--<div id="firebaseui-auth-container"></div>
+<!--TEST-->
 <nav class="navbar navbar-expand-lg navbar-dark transparent">
     <a class="navbar-brand" href="#">
         <img src="assets/images/bootstraplogo.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -55,7 +67,10 @@
         <form class="form-inline my-2 my-lg-0">
             <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-            <button class="btn btn-outline-warning my-2 ml-2 my-sm-0" id="firebase-login">Login</button>
+            
+            <!--Trigger firebase authentication-->
+            <button class="btn btn-outline-warning my-2 ml-2 my-sm-0" id="firebaseui-auth-container">Login</button>
+            
         </form>
     </div>
 </nav>
@@ -76,33 +91,58 @@
             <div class="row m-5">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <div class="card text-center border-light bg-transparent" id="location-search-card">
-                        <div class="card-header bg-transparent border-light text-white">
-                            Search for Movies
-                        </div>
+                    <div class="card border-light bg-transparent">
+                        <div class="card-header bg-transparent border-light text-white text-center">Search for Movies</div>
                         <div class="card-body">
                             <form>
                                 <!--<div class="form-group text-white text-center">
-                                    <label for="inputLandmark" class="col-form-label">Landmark:</label>
-                                </div>
-                                <div class="form-group text-center">
-                                    <input type="text" class="form-control" id="inputLandmark" placeholder="Georgia World Congress Center, e.g.">
-                                    <button class="btn btn-outline-light" id="submit-landmark" type="submit">Submit</button>
+                                    <label for="inputLandmark">Landmark:</label>
+                                    <div class="form-group form-row justify-content-center">
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="inputLandmark" placeholder="Georgia World Congress Center, e.g.">
+                                        </div>
+                                        <div class="col-auto"></div>
+                                        <div class="col-md-2">
+                                            <button type="submit" class="btn btn-outline-light mr-0" id="submit-landmark">Submit</button>
+                                        </div>
+                                    </div>
                                 </div>-->
-                                <div class="form-group mb-0 text-white text-center">
-                                    <label for="inputZip" class="form-label">Zip:</label>
+                                <div class="form-row form-group align-items-center text-white">
+                                    <label for="inputLandmark" class="col-md-3 col-form-label">Landmark:</label>
+                                    <div class="col-md-7">
+                                        <input type="text" class="form-control" id="inputLandmark" placeholder="Georgia World Congress Center, e.g.">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-outline-light" id="submit-landmark">Submit</button>
+                                    </div>
                                 </div>
-                                <div class="form-group text-center">
-                                    <input type="number" name="quantity" class="form-control" id="inputZip" placeholder="30345">
+                                <div class="form-row form-group text-white text-center">
+                                    <label for="inputZip" class="col-md-3 col-form-label">Zip:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="inputZip">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-outline-light" id="submit-zip">Submit</button>
+                                    </div>
                                 </div>
-                                <div class="form-group text-center">
-                                    <button class="btn btn-outline-light" id="submit-zip" type="submit">Submit</button>
-                                </div>
-                                <div class="form-group mb-0 text-white text-center">
-                                    <p class="text-center">Or</p>
-                                </div>
-                                <div class="form-group text-white text-center">
-                                    <button class="btn btn-outline-light" id="use-location" type="submit">Use My Location</button>
+                     <!--           <div class="form-row text-white text-center">
+                                    <div class="form-group col-md-4"></div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputZip">Zip:</label>
+                                        <input type="text" class="form-control" id="inputZip">
+                                    </div>
+                                    <div class="form-group col-md-4"></div>
+                                </div>-->
+                                <!--<div class="form-row text-white text-center">
+                                    <div class="form-group form-check form-check-inline col-md-12 justify-content-center">
+                                        <input type="checkbox" class="form-check-input" id="useMyLocation">
+                                        <label class="form-check-label" for="useMyLocation">Use My Location</label>
+                                    </div>
+                                </div>-->
+                                <div class="form-row text-center">
+                                    <div class="form-group col-md-12">
+                                        <button class="btn btn-outline-light" id="submit-use-location" type="submit">Use My Location</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -114,37 +154,15 @@
     </div>
 </div>
 
-<!--Login Modal Code -->
-<div class="modal fade" tabindex="-1" role="dialog" id="login-modal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
     <!-- Link to jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- Link to Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <!-- Link to Boostrap Javascript Plugins -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <!-- Link to Moment.js -->
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <!-- Link to Javascript -->
-    <script src="assets/app.js"></script>
+<script src="assets/app.js"></script>
+    <!--Link to Firebase Javascript-->
+<script src="assets/firebase.js"></script>
 </body>
 </html>
