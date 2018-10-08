@@ -13,7 +13,7 @@ var config = {
  
 
   var uiConfig = {
-    signInSuccessUrl: '<url-to-redirect-to-on-success>',
+    signInSuccessUrl: 'https://stolbert3.github.io/Project1-Group13/',
     signInOptions: [
       // Leave the lines as is for the providers you want to offer your users.
      
