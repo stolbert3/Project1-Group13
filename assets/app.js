@@ -86,24 +86,6 @@ function displayShowtimes(key) {
             console.log('Showtime Passed');
         }
 
-
-        /*let venue = showtimes[m].theatre.name;
-        let ticketURL = showtimes[m].ticketURI;
-
-        let ticketTimeData = `<tr>
-                                  <td><p class="text-white">${screeningadj}</p></td>
-                                  <td><p class="text-white">${venue}</p></td>
-                                  <td><a href="${ticketURL}" target="_blank"><p class="text-white">Link</p></a></td>
-                                </tr>`;
-
-        $("#ticket-times tbody").append(ticketTimeData);*/
-
-        /*let showtimeData = `<p class="card-text text-white">${screeningadj} : ${venue} : <a href="${ticketURL}" target="_blank">
-                            <p class="card-text text-white">Link</p></a></p>`;*/
-
-        /*console.log(showtimeData);*/
-
-        /*$("#movie-data-display").append(showtimeData);*/
     }
 
 }
@@ -224,18 +206,7 @@ $("#firebase-login").on("click", function(event) {
 
 });
 
-/*$("#submit-landmark").on("click", function(event) {
-    event.preventDefault();
-
-    console.log("Search Via Landmark");
-    let landmark = $("#inputLandmark").val().trim();
-    console.log(landmark);
-
-    $("#inputLandmark").val("");
-
-});*/
 $(document).on("click", "#submit-zip", function(event) {
-/*$("#submit-zip").on("click", function(event) {*/
     event.preventDefault();
 
     let zipCode = $("#inputZip").val().trim();
@@ -252,7 +223,6 @@ $(document).on("click", "#submit-zip", function(event) {
 });
 
 $(document).on("click", "#use-location", function(event) {
-/*$("#use-location").on("click", function(event) {*/
     event.preventDefault();
     /*console.log("Search using my location");*/
     navigator.geolocation.getCurrentPosition(granted, denied);
