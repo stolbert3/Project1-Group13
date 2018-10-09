@@ -1,3 +1,37 @@
+// Initialize Firebase
+
+var config = {
+    apiKey: "AIzaSyBxq4l59TeNIU8ISsodXpdxmvnMZIWa3LU",
+    authDomain: "project1-group13.firebaseapp.com",
+    databaseURL: "https://project1-group13.firebaseio.com",
+    projectId: "project1-group13",
+    storageBucket: "project1-group13.appspot.com",
+    messagingSenderId: "799198513092"
+  };
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+ 
+ 
+
+  var uiConfig = {
+    signInSuccessUrl: 'https://stolbert3.github.io/Project1-Group13/',
+    signInOptions: [
+      // Leave the lines as is for the providers you want to offer your users.
+     
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+      
+    ],
+   
+};
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+// The start method will wait until the DOM is loaded.
+ui.start('#firebaseui-auth-container', uiConfig);
+
+console.log("firebase test");
+// End of Firebase initialization //
+
 function displayMovies(response) {
     console.log(response);
 
@@ -22,6 +56,7 @@ function displayMovies(response) {
         let movieCardTitle = `<p class="card-text text-white" id="${k}" data-title="${k}">${movieTitle}</p>`;
 
         $("#movie-title-display").append(movieCardTitle);
+        database.ref(movieCardTitle);
     }
 
 
