@@ -11,6 +11,7 @@ var config = {
   firebase.initializeApp(config);
 
   var database = firebase.database();
+  
  
  
 
@@ -20,7 +21,7 @@ var config = {
       // Leave the lines as is for the providers you want to offer your users.
      
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+      
       
     ],
    
@@ -56,7 +57,7 @@ function displayMovies(response) {
         let movieCardTitle = `<p class="card-text text-white" id="${k}" data-title="${k}">${movieTitle}</p>`;
 
         $("#movie-title-display").append(movieCardTitle);
-        database.ref(movieCardTitle);
+        
     }
 
 
