@@ -21,9 +21,28 @@ html, body, header, .view {
 }
 
 #results-row {
-    max-height: calc(100vh - 272px);
+    max-height: 100vh;
 }
 
-#column-1, #column-2, #column-3 {
+#movie-title-display {
+    max-height: 85vh;
+    /*max-height: calc(100vh - 272px); */
     overflow: auto;
 }
+
+#movie-data-display {
+    max-height: 85vh;
+    overflow: auto;
+}
+
+#column-2 {
+    max-height: 92vh;
+    /*max-height: calc(100vh - 272px); */
+    overflow: auto;
+}
+
+
+/*
+#column-1, #column-2, #column-3 {
+    overflow: auto;
+}*/
