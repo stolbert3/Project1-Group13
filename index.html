@@ -33,34 +33,13 @@
             <li class="nav-item active">
                 <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
                 <a class="nav-link" href="results.html">Results Page</a>
-            </li>
-            <!--<li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>-->
-            <!--<li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Other CSS
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Semantic UI</a>
-                    <a class="dropdown-item" href="foundation.html">Foundation</a>
-                    <a class="dropdown-item" href="bulma.html">Bulma</a>
-                    <a class="dropdown-item" href="primer.html">Primer</a>
-                    <a class="dropdown-item" href="tachyons.html">Tachyons</a>
-                    <a class="dropdown-item" href="uikit.html">UIKit</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">More to Come...</a>
-                </div>
-            </li>-->
-            <!--<li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
             </li>-->
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+            <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+            <button class="btn btn-outline-success my-2 my-sm-0" id="reset-search">Reset</button>
             <button class="btn btn-outline-warning my-2 ml-2 my-sm-0" id="firebase-login">Login</button>
         </form>
     </div>
@@ -79,9 +58,9 @@
                 </div>
                 <!--Grid column-->
             </div>
-            <div class="row m-5">
-                <div class="col-md-4" id="col11"></div>
-                <div class="col-md-4" id="col12">
+            <div class="row m-5" id="results-row">
+                <div class="col-md-4" id="column-1"></div>
+                <div class="col-md-4" id="column-2">
                     <div class="card text-center border-light bg-transparent" id="location-search-card">
                         <div class="card-header bg-transparent border-light text-white">
                             Search for Movies
@@ -114,7 +93,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" id="col13"></div>
+                <div class="col-md-4" id="column-3"></div>
             </div>
         </div>
     </div>

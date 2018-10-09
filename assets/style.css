@@ -3,7 +3,8 @@ html, body, header, .view {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background: url("images/atl.jpg") no-repeat center center fixed;
+    background: url("images/what-the-hex-dark.png") repeat;
+    /*background: url("images/atl.jpg") no-repeat center center fixed;*/
     height: 100%;
 }
 
@@ -14,3 +15,34 @@ html, body, header, .view {
 .bg-clear {
     opacity: 0;
 }
+
+#reset-search {
+    display: none;
+}
+
+#results-row {
+    max-height: 100vh;
+}
+
+#movie-title-display {
+    max-height: 85vh;
+    /*max-height: calc(100vh - 272px); */
+    overflow: auto;
+}
+
+#movie-data-display {
+    max-height: 85vh;
+    overflow: auto;
+}
+
+#column-2 {
+    max-height: 92vh;
+    /*max-height: calc(100vh - 272px); */
+    overflow: auto;
+}
+
+
+/*
+#column-1, #column-2, #column-3 {
+    overflow: auto;
+}*/
