@@ -31,15 +31,14 @@ ui.start('#firebaseui-auth-container', uiConfig);
 console.log("firebase test");
 // End of Firebase initialization //
 
-function displayMovies(response) {
-    console.log(response);
+
 
 // Global Object to Hold Movie Query Data ==============================================================================
 let currentMovies = {};
 // Functions ===========================================================================================================
 // To Display the Initial List of All Movies playing nearby.
-function displayMovies() {
-    console.log();
+function displayMovies(response) {
+    console.log(response);
 
     let movieCard = `<div class="card text-center border-light bg-transparent">
                         <div class="card-header bg-transparent border-light text-white">Currently Playing Nearby</div>
