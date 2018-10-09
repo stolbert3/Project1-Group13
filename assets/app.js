@@ -2,6 +2,7 @@
 let currentMovies = {};
 
 // Functions ===========================================================================================================
+// To Display the Initial List of All Movies playing nearby.
 function displayMovies() {
     console.log();
 
@@ -23,29 +24,38 @@ function displayMovies() {
     $("#column-2").empty();
 }
 
+// To Display the Playing Times of the Movie, once selected.
 function displayShowtimes(key) {
     console.log(currentMovies[key]);
 
+    // To Prevent Error In Displaying Movie Times if the Movie does not have a listed rating.
+    let rated;
     let ratings = currentMovies[key].ratings;
-    let r = ratings[0];
+    if (ratings !== undefined) {
+        let r = ratings[0];
+        rated = r.code;
+    } else {
+        rated = "NA";
+    }
+
    // console.log(ratings);
    // console.log(r);
-    let rated = r.code;
+
    // console.log(rated);
 
     let title = currentMovies[key].title;
-    let releasedate = moment(currentMovies[key].releaseDate).format('D MMM YY');
+    let releaseDate = moment(currentMovies[key].releaseDate).format('D MMM YY');
     let short = currentMovies[key].shortDescription;
-    let movieurl = currentMovies[key].officialUrl;
+    let movieURL = currentMovies[key].officialUrl;
     let showtimes = currentMovies[key].showtimes;
     console.log(showtimes);
 
     let movieCard = `<div class="card text-center border-light bg-transparent">
                         <h5 class="card-header bg-transparent border-light text-white">${title} (${rated})</h5>
                         <div class="card-body" id="movie-data-display">
-                            <p class="card-text text-white">Released: ${releasedate}</p>
+                            <p class="card-text text-white">Released: ${releaseDate}</p>
                             <p class="card-text text-white">${short}</p>
-                            <a href="${movieurl}" target="_blank"><p class="card-text text-white">Official Website</p></a>
+                            <a href="${movieURL}" target="_blank"><p class="card-text text-white">Official Website</p></a>
                             <table class="table table-hover" id="ticket-times">
                               <thead>
                                 <tr>
@@ -64,9 +74,9 @@ function displayShowtimes(key) {
     for (var m = 0; m < showtimes.length; m++) {
         let currentTime = moment();/*.format("h:mm A");*/
         /*console.log(currentTime);*/
-        let screeningadj = moment(showtimes[m].dateTime);/*.format("h:mm A");*/
-        /*console.log(screeningadj);*/
-        let diff = screeningadj.diff(currentTime, 'minutes');
+        let screeningAdj = moment(showtimes[m].dateTime);/*.format("h:mm A");*/
+        /*console.log(screeningAdj);*/
+        let diff = screeningAdj.diff(currentTime, 'minutes');
         if (diff > 0) {
             console.log(diff);
 
@@ -74,7 +84,7 @@ function displayShowtimes(key) {
             let ticketURL = showtimes[m].ticketURI;
 
             let ticketTimeData = `<tr>
-                                  <td><p class="text-white">${screeningadj.format("h:mm A")}</p></td>
+                                  <td><p class="text-white">${screeningAdj.format("h:mm A")}</p></td>
                                   <td><p class="text-white">${venue}</p></td>
                                   <td><a href="${ticketURL}" target="_blank"><p class="text-white">Link</p></a></td>
                                 </tr>`;
@@ -90,8 +100,10 @@ function displayShowtimes(key) {
 
 }
 
+// To fully reset the page without having to refresh.  Otherwise another movie can simply be selected from the list,
+// and the videos and playing times for it will be shown.
 function resetPage() {
-    let locationsearchcard = `<div class="card text-center border-light bg-transparent" id="location-search-card">
+    let locationSearchCard = `<div class="card text-center border-light bg-transparent" id="location-search-card">
                                 <div class="card-header bg-transparent border-light text-white">
                                     Search for Movies
                                 </div>
@@ -116,10 +128,11 @@ function resetPage() {
                                 </div>
                             </div>`;
 
-    $("#column-2").append(locationsearchcard);
+    $("#column-2").append(locationSearchCard);
 }
 
 // API Query Functions =================================================================================================
+// Based on Zip Code Input
 function queryZGracenoteAPI (date, zipCode) {
 
     let apiKey = '';
@@ -138,6 +151,7 @@ function queryZGracenoteAPI (date, zipCode) {
 
 }
 
+// Based on HTML Location Data
 function queryLGracenoteAPI (date, lat, lng) {
 
     let apiKey = '';
@@ -156,12 +170,13 @@ function queryLGracenoteAPI (date, lat, lng) {
 
 }
 
+// Query YouTube for movie trailers/videos - Currently Set for 6.
 function queryYoutubeAPI(key) {
 
     let resultsNum = "6";
     let searchMovie = `${currentMovies[key].title} movie 2018`;
-    let apikey = '';
-    let queryURL = `https://www.googleapis.com/youtube/v3/search?key=${apikey}&maxResults=${resultsNum}&part=snippet&q=${searchMovie}&type=video`;
+    let apiKey = '';
+    let queryURL = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&maxResults=${resultsNum}&part=snippet&q=${searchMovie}&type=video`;
 
     $.ajax({
         url: queryURL,
@@ -206,6 +221,7 @@ $("#firebase-login").on("click", function(event) {
 
 });
 
+// Dynamic Button Functions ============================================================================================
 $(document).on("click", "#submit-zip", function(event) {
     event.preventDefault();
 
@@ -247,7 +263,7 @@ $(document).on("click", "#use-location", function(event) {
             case 3: message = 'Operation Timed Out'; break;
             case 4: message = 'Unknown Error'; break;
         }
-        console.log(`Geolocation Error: ${message}`)
+        console.log(`GeoLocation Error: ${message}`)
     }
 
 });
