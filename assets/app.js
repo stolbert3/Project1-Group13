@@ -21,7 +21,7 @@ var config = {
     ],
 };
 
-firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
     .then(function() {
         // Existing and future Auth states are now persisted in the current
         // session only. Closing the window would clear any existing state even
@@ -267,6 +267,18 @@ $("#firebase-login").on("click", function(event) {
     console.log("Login");
 
     $("#login-modal").modal('show');
+
+});
+
+$("#firebase-signout").on("click", function(event) {
+    event.preventDefault();
+    console.log("Sign-out");
+
+    firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+    }).catch(function(error) {
+        // An error happened.
+    });
 
 });
 
