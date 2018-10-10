@@ -20,11 +20,20 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark transparent">
-    <a class="navbar-brand" href="#">
-        <img src="assets/images/bootstraplogo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        Bootstrap
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+    <a class="navbar-brand nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img src="assets/images/filmperson.jpeg" width="40" height="40" class="d-inline-block align-top" alt="">
     </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+    <!--<a class="navbar-brand" href="#">
+        <img src="assets/images/filmperson.jpeg" width="30" height="30" class="d-inline-block align-top" alt="">
+        Bootstrap
+    </a>-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -55,8 +64,9 @@
             <!--Grid row-->
             <div class="row">
                 <!--Grid column-->
-                <div class="col-md-12 mb-4 white-text text-center">
-                    <h1 class="h1 text-uppercase font-weight-bold mb-0 pt-md-5 pt-5" style="color: white"><strong>Movies Application</strong></h1>
+                <div class="col-md-12 mb-4 text-white text-center">
+                    <h1 class="h1 font-weight-bold mb-0 pt-md-5 pt-5"><img src="assets/images/filmperson.jpeg" class="d-inline-block align-top mr-3" height="100" width="100">
+                        <strong>CineCache</strong></h1>
                 </div>
                 <!--Grid column-->
             </div>

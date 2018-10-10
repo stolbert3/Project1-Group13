@@ -184,7 +184,7 @@ function resetPage() {
 // Based on Zip Code Input
 function queryZGracenoteAPI (date, zipCode) {
 
-    let apiKey = '';
+    let apiKey = 'kt43yjc7q7yt3nxk656zr2vb';
     let queryURL = `http://data.tmsapi.com/v1.1/movies/showings?startDate=${date}&zip=${zipCode}&api_key=${apiKey}`;
 
     $.ajax({
@@ -203,7 +203,7 @@ function queryZGracenoteAPI (date, zipCode) {
 // Based on HTML Location Data
 function queryLGracenoteAPI (date, lat, lng) {
 
-    let apiKey = '';
+    let apiKey = 'kt43yjc7q7yt3nxk656zr2vb';
     let queryURL = `http://data.tmsapi.com/v1.1/movies/showings?startDate=${date}&lat=${lat}&lng=${lng}&api_key=${apiKey}`;
 
     $.ajax({
@@ -224,7 +224,7 @@ function queryYoutubeAPI(key) {
 
     let resultsNum = "6";
     let searchMovie = `${currentMovies[key].title} movie 2018`;
-    let apiKey = '';
+    let apiKey = 'AIzaSyAEIDEiKDoZiRNAKOr0sVZRa3l_KeoyrL8';
     let queryURL = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&maxResults=${resultsNum}&part=snippet&q=${searchMovie}&type=video`;
 
     $.ajax({
