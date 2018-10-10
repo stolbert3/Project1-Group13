@@ -70,7 +70,7 @@ function displayMovies(response) {
         
     }
 
-    $("#column-2").empty();
+    /*$("#column-2").empty();*/
 }
 
 // To Display the Playing Times of the Movie, once selected.
@@ -152,32 +152,36 @@ function displayShowtimes(key) {
 // To fully reset the page without having to refresh.  Otherwise another movie can simply be selected from the list,
 // and the videos and playing times for it will be shown.
 function resetPage() {
-    let locationSearchCard = `<div class="card text-center border-light bg-transparent" id="location-search-card">
-                                <div class="card-header bg-transparent border-light text-white">
-                                    Search for Movies
+    let locationSearchCard = `<!--<div class="col-md-4"></div>-->
+                              <!--<div class="col-md-4" id="search-column">-->
+                                <div class="card text-center border-light bg-transparent" id="location-search-card">
+                                    <div class="card-header bg-transparent border-light text-white">
+                                        Search for Movies
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-group mb-0 text-white text-center">
+                                                <label for="inputZip" class="form-label">Zip:</label>
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <input type="number" name="quantity" class="form-control" id="inputZip" placeholder="30345">
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <button class="btn btn-outline-light" id="submit-zip" type="submit">Submit</button>
+                                            </div>
+                                            <div class="form-group mb-0 text-white text-center">
+                                                <p class="text-center">Or</p>
+                                            </div>
+                                            <div class="form-group text-white text-center">
+                                                <button class="btn btn-outline-light" id="use-location" type="submit">Use My Location</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <form>
-                                        <div class="form-group mb-0 text-white text-center">
-                                            <label for="inputZip" class="form-label">Zip:</label>
-                                        </div>
-                                        <div class="form-group text-center">
-                                            <input type="number" name="quantity" class="form-control" id="inputZip" placeholder="30345">
-                                        </div>
-                                        <div class="form-group text-center">
-                                            <button class="btn btn-outline-light" id="submit-zip" type="submit">Submit</button>
-                                        </div>
-                                        <div class="form-group mb-0 text-white text-center">
-                                            <p class="text-center">Or</p>
-                                        </div>
-                                        <div class="form-group text-white text-center">
-                                            <button class="btn btn-outline-light" id="use-location" type="submit">Use My Location</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>`;
+                            <!--</div>-->
+                            <!--<div class="col-md-4"></div>-->`;
 
-    $("#column-2").append(locationSearchCard);
+    $("#search-column").append(locationSearchCard);
 }
 
 // API Query Functions =================================================================================================
@@ -295,6 +299,7 @@ $(document).on("click", "#submit-zip", function(event) {
     queryZGracenoteAPI(date, zipCode);
 
     $("#inputZip").val("");
+    $("#search-column").empty();
     $("#reset-search").show();
 
 });
@@ -313,6 +318,7 @@ $(document).on("click", "#use-location", function(event) {
 
         queryLGracenoteAPI(date, userLat, userLong);
 
+        $("#search-column").empty();
         $("#reset-search").show();
     }
 
