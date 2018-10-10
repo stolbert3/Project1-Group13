@@ -30,18 +30,18 @@ html, body, header, .view {
 }
 
 #movie-title-display {
-    max-height: 85vh;
+    max-height: 87vh;
     /*max-height: calc(100vh - 272px); */
     overflow: auto;
 }
 
 #movie-data-display {
-    max-height: 85vh;
+    max-height: 87vh;
     overflow: auto;
 }
 
 #column-2 {
-    max-height: 95vh;
+    max-height: 92vh;
     /*max-height: calc(100vh - 272px); */
     overflow: auto;
 }
@@ -50,3 +50,45 @@ html, body, header, .view {
 #column-1, #column-2, #column-3 {
     overflow: auto;
 }*/
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #555555;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #888888;
+}
+
+/* Media Queries */
+@media screen and (min-width: 769px) and (max-width: 980px) {
+
+}
+
+@media (max-width: 768px) {
+    #movie-title-display {
+        max-height: 75vh;
+        /*max-height: calc(100vh - 272px); */
+        overflow: auto;
+    }
+    #column-2 {
+        max-height: 75vh;
+    }
+}
+
+@media screen and (max-width: 640px) {
+
+}
