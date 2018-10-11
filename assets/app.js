@@ -178,7 +178,7 @@ function resetPage() {
 function queryZGracenoteAPI (date, zipCode) {
 
     let apiKey = 'zmxbv8fhjnt7j6q4uedn4vpv';
-    let queryURL = `http://data.tmsapi.com/v1.1/movies/showings?startDate=${date}&zip=${zipCode}&api_key=${apiKey}`;
+    let queryURL = `https://data.tmsapi.com/v1.1/movies/showings?startDate=${date}&zip=${zipCode}&api_key=${apiKey}`;
 
     $.ajax({
         url: queryURL,
@@ -197,7 +197,7 @@ function queryZGracenoteAPI (date, zipCode) {
 function queryLGracenoteAPI (date, lat, lng) {
 
     let apiKey = 'zmxbv8fhjnt7j6q4uedn4vpv';
-    let queryURL = `http://data.tmsapi.com/v1.1/movies/showings?startDate=${date}&lat=${lat}&lng=${lng}&api_key=${apiKey}`;
+    let queryURL = `https://data.tmsapi.com/v1.1/movies/showings?startDate=${date}&lat=${lat}&lng=${lng}&api_key=${apiKey}`;
 
     $.ajax({
         url: queryURL,
