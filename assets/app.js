@@ -51,8 +51,7 @@ console.log("firebase test");
 let currentMovies = {};
 // Functions ===========================================================================================================
 // To Display the Initial List of All Movies playing nearby.
-function displayMovies(response) {
-    console.log(response);
+function displayMovies() {
 
     let movieCard = `<div class="card text-center border-light bg-transparent">
                         <div class="card-header bg-transparent border-light text-white">Currently Playing Nearby</div>
@@ -70,7 +69,6 @@ function displayMovies(response) {
         
     }
 
-    /*$("#column-2").empty();*/
 }
 
 // To Display the Playing Times of the Movie, once selected.
@@ -86,11 +84,6 @@ function displayShowtimes(key) {
     } else {
         rated = "NA";
     }
-
-   // console.log(ratings);
-   // console.log(r);
-
-   // console.log(rated);
 
     let title = currentMovies[key].title;
     let releaseDate = moment(currentMovies[key].releaseDate).format('D MMM YY');
@@ -152,9 +145,7 @@ function displayShowtimes(key) {
 // To fully reset the page without having to refresh.  Otherwise another movie can simply be selected from the list,
 // and the videos and playing times for it will be shown.
 function resetPage() {
-    let locationSearchCard = `<!--<div class="col-md-4"></div>-->
-                              <!--<div class="col-md-4" id="search-column">-->
-                                <div class="card text-center border-light bg-transparent" id="location-search-card">
+    let locationSearchCard = `<div class="card text-center border-light bg-transparent" id="location-search-card">
                                     <div class="card-header bg-transparent border-light text-white">
                                         Search for Movies
                                     </div>
@@ -177,9 +168,7 @@ function resetPage() {
                                             </div>
                                         </form>
                                     </div>
-                                </div>
-                            <!--</div>-->
-                            <!--<div class="col-md-4"></div>-->`;
+                                </div>`;
 
     $("#search-column").append(locationSearchCard);
 }
@@ -188,7 +177,7 @@ function resetPage() {
 // Based on Zip Code Input
 function queryZGracenoteAPI (date, zipCode) {
 
-    let apiKey = '';
+    let apiKey = 'zmxbv8fhjnt7j6q4uedn4vpv';
     let queryURL = `http://data.tmsapi.com/v1.1/movies/showings?startDate=${date}&zip=${zipCode}&api_key=${apiKey}`;
 
     $.ajax({
@@ -207,7 +196,7 @@ function queryZGracenoteAPI (date, zipCode) {
 // Based on HTML Location Data
 function queryLGracenoteAPI (date, lat, lng) {
 
-    let apiKey = '';
+    let apiKey = 'zmxbv8fhjnt7j6q4uedn4vpv';
     let queryURL = `http://data.tmsapi.com/v1.1/movies/showings?startDate=${date}&lat=${lat}&lng=${lng}&api_key=${apiKey}`;
 
     $.ajax({
@@ -228,7 +217,7 @@ function queryYoutubeAPI(key) {
 
     let resultsNum = "6";
     let searchMovie = `${currentMovies[key].title} movie 2018`;
-    let apiKey = '';
+    let apiKey = 'AIzaSyBxq4l59TeNIU8ISsodXpdxmvnMZIWa3LU';
     let queryURL = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&maxResults=${resultsNum}&part=snippet&q=${searchMovie}&type=video`;
 
     $.ajax({

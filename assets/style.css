@@ -46,12 +46,8 @@ html, body, header, .view {
     overflow: auto;
 }
 
-/*
-#column-1, #column-2, #column-3 {
-    overflow: auto;
-}*/
-
-/* width */
+/* Custom Scrollbar Styling */
+/* Width */
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -68,7 +64,7 @@ html, body, header, .view {
     border-radius: 10px;
 }
 
-/* Handle on hover */
+/* Handle:Hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #888888;
 }
@@ -81,7 +77,6 @@ html, body, header, .view {
 @media (max-width: 768px) {
     #movie-title-display {
         max-height: 75vh;
-        /*max-height: calc(100vh - 272px); */
         overflow: auto;
     }
     #column-2 {
