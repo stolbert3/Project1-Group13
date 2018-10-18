@@ -19,26 +19,6 @@ Web Browser - Google Chrome Preferred
 
 No Installation Necessary
 
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
 ## Built With
 
 * [Bootstrap](http://getbootstrap.com/) - For the CSS Styling of the Webpage.
@@ -58,5 +38,5 @@ Give an example
 
 * Hat tip to anyone whose code was used
 * Inspiration
-* etc
+* and finding a movies API that actually worked.
 
