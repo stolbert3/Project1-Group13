@@ -79,9 +79,11 @@ html, body, header, .view {
         max-height: 75vh;
         overflow: auto;
     }
+
     #column-2 {
         max-height: 80vh;
     }
+
     #column-1, #column-2, #column-3 {
         margin-bottom: 20px;
     }
@@ -91,13 +93,16 @@ html, body, header, .view {
     .h1 {
         line-height: 50px;
     }
+
     #film-guy {
         height: 50px;
         width: 50px;
     }
+
     #column-3 {
         margin-bottom: 15px;
     }
+
     #column-1, #column-2, #column-3 {
         margin-bottom: 20px;
         max-height: 95vh;

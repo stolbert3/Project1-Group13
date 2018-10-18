@@ -7,22 +7,21 @@ var config = {
     projectId: "project1-group13",
     storageBucket: "project1-group13.appspot.com",
     messagingSenderId: "799198513092"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
 
- 
 
-  var uiConfig = {
+var uiConfig = {
     signInSuccessUrl: 'https://stolbert3.github.io/Project1-Group13/',
     signInOptions: [
-      // Leave the lines as is for the providers you want to offer your users.
-     
-      firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        // Leave the lines as is for the providers you want to offer your users.
+
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
     ],
 };
 
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
-    .then(function() {
+    .then(function () {
         // Existing and future Auth states are now persisted in the current
         // session only. Closing the window would clear any existing state even
         // if a user forgets to sign out.
@@ -30,7 +29,7 @@ firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
         // New sign-in will be persisted with session persistence.
         return firebase.auth().signInWithEmailAndPassword(email, password);
     })
-    .catch(function(error) {
+    .catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -44,7 +43,6 @@ ui.start('#firebaseui-auth-container', uiConfig);
 
 console.log("firebase test");
 // End of Firebase initialization //
-
 
 
 // Global Object to Hold Movie Query Data ==============================================================================
@@ -66,7 +64,7 @@ function displayMovies() {
                                 <p class="card-text text-white">${movieTitle}</p></a>`;
 
         $("#movie-title-display").append(movieCardTitle);
-        
+
     }
 
 }
@@ -114,9 +112,11 @@ function displayShowtimes(key) {
     $("#column-3").append(movieCard);
 
     for (var m = 0; m < showtimes.length; m++) {
-        let currentTime = moment();/*.format("h:mm A");*/
+        let currentTime = moment();
+        /*.format("h:mm A");*/
         /*console.log(currentTime);*/
-        let screeningAdj = moment(showtimes[m].dateTime);/*.format("h:mm A");*/
+        let screeningAdj = moment(showtimes[m].dateTime);
+        /*.format("h:mm A");*/
         /*console.log(screeningAdj);*/
         let diff = screeningAdj.diff(currentTime, 'minutes');
         if (diff > 0) {
@@ -175,7 +175,7 @@ function resetPage() {
 
 // API Query Functions =================================================================================================
 // Based on Zip Code Input
-function queryZGracenoteAPI (date, zipCode) {
+function queryZGracenoteAPI(date, zipCode) {
 
     let apiKey = 'zmxbv8fhjnt7j6q4uedn4vpv';
     let queryURL = `https://data.tmsapi.com/v1.1/movies/showings?startDate=${date}&zip=${zipCode}&api_key=${apiKey}`;
@@ -184,7 +184,7 @@ function queryZGracenoteAPI (date, zipCode) {
         url: queryURL,
         method: "GET"
     })
-        .then(function(response) {
+        .then(function (response) {
             currentMovies = response;
             // console.log(response);
             displayMovies();
@@ -194,7 +194,7 @@ function queryZGracenoteAPI (date, zipCode) {
 }
 
 // Based on HTML Location Data
-function queryLGracenoteAPI (date, lat, lng) {
+function queryLGracenoteAPI(date, lat, lng) {
 
     let apiKey = 'zmxbv8fhjnt7j6q4uedn4vpv';
     let queryURL = `https://data.tmsapi.com/v1.1/movies/showings?startDate=${date}&lat=${lat}&lng=${lng}&api_key=${apiKey}`;
@@ -203,7 +203,7 @@ function queryLGracenoteAPI (date, lat, lng) {
         url: queryURL,
         method: "GET"
     })
-        .then(function(response) {
+        .then(function (response) {
             currentMovies = response;
             // console.log(response);
             displayMovies();
@@ -224,7 +224,7 @@ function queryYoutubeAPI(key) {
         url: queryURL,
         method: "GET"
     })
-        .then(function(response) {
+        .then(function (response) {
             let snippets = response.items;
             let videos = [];
 
@@ -245,7 +245,7 @@ function queryYoutubeAPI(key) {
 }
 
 // Button Click Functions ==============================================================================================
-$("#reset-search").on("click", function(event) {
+$("#reset-search").on("click", function (event) {
     event.preventDefault();
     console.log('Reset');
 
@@ -255,7 +255,7 @@ $("#reset-search").on("click", function(event) {
 
 });
 
-$("#firebase-login").on("click", function(event) {
+$("#firebase-login").on("click", function (event) {
     event.preventDefault();
     console.log("Login");
 
@@ -263,20 +263,20 @@ $("#firebase-login").on("click", function(event) {
 
 });
 
-$("#firebase-signout").on("click", function(event) {
+$("#firebase-signout").on("click", function (event) {
     event.preventDefault();
     console.log("Sign-out");
 
-    firebase.auth().signOut().then(function() {
+    firebase.auth().signOut().then(function () {
         // Sign-out successful.
-    }).catch(function(error) {
+    }).catch(function (error) {
         // An error happened.
     });
 
 });
 
 // Dynamic Button Functions ============================================================================================
-$(document).on("click", "#submit-zip", function(event) {
+$(document).on("click", "#submit-zip", function (event) {
     event.preventDefault();
 
     let zipCode = $("#inputZip").val().trim();
@@ -293,7 +293,7 @@ $(document).on("click", "#submit-zip", function(event) {
 
 });
 
-$(document).on("click", "#use-location", function(event) {
+$(document).on("click", "#use-location", function (event) {
     event.preventDefault();
     /*console.log("Search using my location");*/
     navigator.geolocation.getCurrentPosition(granted, denied);
@@ -313,18 +313,26 @@ $(document).on("click", "#use-location", function(event) {
 
     function denied(error) {
         let message;
-        switch(error.code) {
-            case 1: message = 'Permission Denied'; break;
-            case 2: message = 'Position Unavailable'; break;
-            case 3: message = 'Operation Timed Out'; break;
-            case 4: message = 'Unknown Error'; break;
+        switch (error.code) {
+            case 1:
+                message = 'Permission Denied';
+                break;
+            case 2:
+                message = 'Position Unavailable';
+                break;
+            case 3:
+                message = 'Operation Timed Out';
+                break;
+            case 4:
+                message = 'Unknown Error';
+                break;
         }
         console.log(`GeoLocation Error: ${message}`)
     }
 
 });
 
-$(document).on("click", ".movie-title", function() {
+$(document).on("click", ".movie-title", function () {
     let key = $(this).attr("id");
 
     $("#column-2, #column-3").empty();
