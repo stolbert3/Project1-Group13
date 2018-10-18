@@ -1,26 +1,42 @@
-# Project1-Group13
-<<<<<<< HEAD
+# CineCache
+##### Project1-Group13
 
-=======
->>>>>>> c02e01c1fad0092b12be20573ca89eea5a3e3e9d
-PROJECT TITLE: Movie App
+This application allows the user to either use their current location, or input a zip code in order to generate a list of the movies playing in the immediate vicinity.  Then the user can select a particular movie to view the specifics for, at which point in time the information for that film as well as a listing of all the times that movie is playing for the rest of the day, along with accompanying theater information and links to purchase tickets are also displayed.  Additionally the YouTube API is queried and videos/trailers pertaining to the film selected are displayed.  The app is fully mobile-ready for any size device.
 
-TEAM MEMBERS: Abdul Hameed, Dalton Ricker, Scott James Ritchey, Sydney Tolbert
+## Getting Started
 
-PROJECT DESCRIPTION: This program will search nearby movie theaters and showtimes and return the next movie playing in the user's area. There will be user input options for time constraints (less than three hours, out by 4:00pm, etc.), location restraints (within 5 miles, less than 20 minutes away, etc.) and possible calculation of travel time to the theater when making suggestions (if you leave in 5 minutes, you can make the X showing of Y theater). The user will also be given the option to create an account and rate movies as they see them to make movie suggestions more personalized.
+* [CineCache](https://stolbert3.github.io/Project1-Group13/) - Deployed Version of the Site can be viewed here. 
 
-SKETCH/WIREFRAME: Project1-Group13/Movie App Wireframe.png
+### Prerequisites
 
-APIs: MovieGlu or Fandango for theater and showtime data, Google Maps for location services and travel time
+The only thing you need to enjoy the pleasure and ease of searching for movies via CineCache is a web browser.  To view/manipulate the code you need a TextEditor or IDE.
 
-BREAKDOWN OF TASKS: 
-Abdul & Dalton: Write HTML code & choose CSS framework
-<<<<<<< HEAD
-Scott: Get API keys
-=======
+```
+Web Browser - Google Chrome Preferred
+```
 
-Scott: Get API keys
+### Installing
 
->>>>>>> c02e01c1fad0092b12be20573ca89eea5a3e3e9d
-Sydney: Set up Firebase for user input (user accounts)
-All: javascript code
+No Installation Necessary
+
+## Built With
+
+* [Bootstrap](http://getbootstrap.com/) - For the CSS Styling of the Webpage.
+* [Firebase](https://firebase.google.com/) - For login authentication as well as future development of the user profiles/favorites.
+* [Moment.js](https://momentjs.com/) - For handling and displaying current time data from the APIs.
+* [Gracenote Developer API](http://developer.tmsapi.com/docs/data_v1_1/Movies/) - For getting the movie & showtime information.
+* [YouTube Data API](https://developers.google.com/youtube/v3/) - Gathering the videos/trailers to display.
+
+## Authors
+
+* **Dalton Ricker** -- [SasquatchXYZ](https://github.com/SasquatchXYZ)
+* **Scott Ritchey** -- [Sritchey1](https://github.com/Sritchey1)
+* **Sydney Tolbert** -- [stolbert3](https://github.com/stolbert3)
+* **Abdul Hameed Sabree** -- [ahs448](https://github.com/ahs4448)
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* and finding a movies API that actually worked.
+
